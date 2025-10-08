@@ -33,7 +33,7 @@ public class BookController {
         while (true) {
             int choice = bookView.showMenu();
             Runnable action = actions.get(choice);
-            if (action != null) {
+            if (action != null && action != actions.get(6)) {
                 action.run();
             } else break;
         }

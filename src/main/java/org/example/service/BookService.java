@@ -8,26 +8,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookService {
     private final List<Book> books;
-
     public List<Book> getAll() {
         return books;
     }
 
     public List<Book> findByAuthor(String author) {
         return books.stream()
-                    .filter(b -> b.getAuthor().contains(author))
+                    .filter(b -> b.author().contains(author))
                     .toList();
     }
 
     public List<Book> findByPublisher(String publisher) {
         return books.stream()
-                    .filter(b -> b.getPublisher().contains(publisher))
+                    .filter(b -> b.publisher().contains(publisher))
                     .toList();
     }
 
     public List<Book> findNewerThan(int year) {
         return books.stream()
-                    .filter(b -> b.getYearPublished() > year)
+                    .filter(b -> b.yearPublished() > year)
                     .toList();
     }
 

@@ -1,13 +1,15 @@
 package org.example.view;
 
+import lombok.RequiredArgsConstructor;
 import org.example.model.Book;
 
 import java.util.List;
 import java.util.Scanner;
 
+@RequiredArgsConstructor
 public class BookView {
-    private final Scanner scanner = new Scanner("5\n3\n2\n4\n5\n2\n3\n1\n6\n");
-//
+    private final Scanner scanner;
+
     public int showMenu() {
         System.out.println("\n1 - Show all books");
         System.out.println("2 - Show books by author");

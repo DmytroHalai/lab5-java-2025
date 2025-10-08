@@ -6,9 +6,8 @@ import org.example.service.BookService;
 import org.example.view.BookView;
 
 import java.util.List;
+import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         List<Book> books = List.of(
@@ -25,7 +24,7 @@ public class Main {
         );
 
         BookService service = new BookService(books);
-        BookView view = new BookView();
+        BookView view = new BookView(new Scanner(System.in));
         BookController controller = new BookController(service, view);
 
         controller.run();
