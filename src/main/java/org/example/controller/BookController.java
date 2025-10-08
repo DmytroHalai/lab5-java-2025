@@ -1,17 +1,23 @@
 package org.example.controller;
 
-import lombok.RequiredArgsConstructor;
+import org.example.model.Book;
 import org.example.service.BookService;
 import org.example.view.BookView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
-@RequiredArgsConstructor
 public class BookController {
 
     private final BookService bookService;
     private final BookView bookView;
+
+    public BookController(List<Book> books, Scanner scanner) {
+        this.bookService = new BookService(books);
+        this.bookView = new BookView(scanner);
+    }
 
     public void run() {
         Map<Integer, Runnable> actions = new HashMap<>();

@@ -22,11 +22,6 @@ public class Main {
                 new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 1997, "Bloomsbury", 223, 10.99),
                 new Book("The Lord of the Rings", "J.R.R. Tolkien", 1954, "George Allen & Unwin", 1178, 20.99)
         );
-
-        BookService service = new BookService(books);
-        BookView view = new BookView(new Scanner(System.in));
-        BookController controller = new BookController(service, view);
-
-        controller.run();
+        new BookController(books, new Scanner(System.in)).run();
     }
 }
