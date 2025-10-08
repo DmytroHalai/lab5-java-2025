@@ -36,12 +36,13 @@ public class BookController {
         });
         actions.put(5, () -> bookView.printBooks(bookService.sortByPublisher()));
         actions.put(6, () -> System.out.println("Exiting..."));
+
         while (true) {
             int choice = bookView.showMenu();
             Runnable action = actions.get(choice);
-            if (action != null && action != actions.get(6)) {
-                action.run();
-            } else break;
+            if (action == null) System.out.println("Invalid choice. Please try again.");
+            else if (action == actions.get(6)) break;
+            else action.run();
         }
         System.out.println("Bye!");
     }

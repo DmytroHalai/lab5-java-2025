@@ -18,6 +18,11 @@ public class BookView {
         System.out.println("5 - Sort books by publishers");
         System.out.println("6 - Exit");
         System.out.print("Choose: ");
+        while(!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next();
+            System.out.print("Choose: ");
+        }
         return scanner.hasNext() ? scanner.nextInt() : -1;
     }
 
