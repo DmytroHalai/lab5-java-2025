@@ -2,8 +2,6 @@ package org.example;
 
 import org.example.controller.BookController;
 import org.example.model.Book;
-import org.example.service.BookService;
-import org.example.view.BookView;
 
 import java.util.List;
 import java.util.Scanner;

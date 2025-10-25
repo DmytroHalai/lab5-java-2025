@@ -1,13 +1,20 @@
 package org.example.service;
 
-import lombok.RequiredArgsConstructor;
 import org.example.model.Book;
+import org.example.file.FileBooksReader;
+import org.example.file.FileBooksWriter;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
 public class BookService {
     private final List<Book> books;
+
+    public BookService(List<Book> books) {
+        this.books = new ArrayList<>(books);
+    }
+
     public List<Book> getAll() {
         return books;
     }
@@ -34,5 +41,14 @@ public class BookService {
         return books.stream()
                     .sorted()
                     .toList();
+    }
+
+    public void downloadFromFile(String fileName) throws IOException {
+        books.clear();
+        books.addAll(FileBooksReader.downloadFromFile(fileName));
+    }
+
+    public void saveInFile(String fileName) throws IOException {
+        FileBooksWriter.saveInFile(fileName, books);
     }
 }
