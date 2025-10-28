@@ -1,12 +1,12 @@
 package org.example.controller;
 
+import org.example.file.FileBooksReader;
 import org.example.model.Book;
 import org.example.service.BookService;
 import org.example.utils.CryptoService;
 import org.example.utils.URLViewer;
 import org.example.view.BookView;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,43 +40,41 @@ public class BookController {
         actions.put(5, () -> bookView.printBooks(bookService.sortByPublisher()));
         actions.put(6, () -> {
             String fileName = bookView.readString("Enter the name of the file you'd like to save books list into: ");
-            try {
-                bookService.saveInFile(fileName);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            bookService.saveInFile(fileName);
+            System.out.println("Books uploading process was finished");
         });
         actions.put(7, () -> {
             String fileName = bookView.readString("Enter the name of the file which you'd like to download books info from: ");
-            try {
-                bookService.downloadFromFile(fileName);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            bookService.downloadFromFile(fileName);
+            System.out.println("Books downloading process was finished");
         });
+
         actions.put(8, () -> {
             String sourceFileName = bookView.readString("Enter the name of the file which content you want to encrypt: ");
             String resultFileName = bookView.readString("Enter the name of the file, in which encrypted content will be written");
             String key = bookView.readString("Enter the key for the encryptor (1-symbol): ");
-            try {
-                CryptoService.encrypt(sourceFileName, resultFileName, key.toCharArray()[0]);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            CryptoService.encrypt(sourceFileName, resultFileName, key.toCharArray()[0]);
+            System.out.println("Encryption process was finished");
         });
+
         actions.put(9, () -> {
             String sourceFileName = bookView.readString("Enter the name of the file which content you want to decrypt: ");
             String resultFileName = bookView.readString("Enter the name of the file, in which decrypted content will be written");
             String key = bookView.readString("Enter the key for the decryptor (1-symbol): ");
-            try {
-                CryptoService.decrypt(sourceFileName, resultFileName, key.toCharArray()[0]);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            CryptoService.decrypt(sourceFileName, resultFileName, key.toCharArray()[0]);
+            System.out.println("Decryption process was finished");
         });
+
         actions.put(10, () -> {
             String sourceURL = bookView.readString("Enter the source URL: ");
-            URLViewer.countTagsFromUrl(sourceURL);
+            int isOrderedByValue = bookView.readInt("Enter 1 to order by amount or 0 if by alphabet of tags: ");
+            URLViewer.countTagsFromUrl(sourceURL, isOrderedByValue == 1);
+        });
+
+        actions.put(11, () -> {
+            String fileName = bookView.readString("Enter text file path: ");
+            String longestLine = FileBooksReader.findLongestLineByWords(fileName);
+            System.out.println("Longest line: " + longestLine);
         });
         actions.put(0, () -> System.out.println("Exiting..."));
 

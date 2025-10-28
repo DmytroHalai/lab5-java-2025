@@ -43,12 +43,12 @@ public class BookService {
                     .toList();
     }
 
-    public void downloadFromFile(String fileName) throws IOException {
+    public void downloadFromFile(String fileName) {
         books.clear();
         books.addAll(FileBooksReader.downloadFromFile(fileName));
     }
 
-    public void saveInFile(String fileName) throws IOException {
+    public void saveInFile(String fileName) {
         FileBooksWriter.saveInFile(fileName, books);
     }
 }

@@ -21,6 +21,7 @@ public class BookView {
         System.out.println("8 - Encrypt file");
         System.out.println("9 - Decrypt file");
         System.out.println("10 - Get tags of the page by URL");
+        System.out.println("11 - Print line with most words from file");
         System.out.println("0 - Exit");
         System.out.print("Choose: ");
         while (!scanner.hasNextInt()) {
