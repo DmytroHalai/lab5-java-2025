@@ -51,7 +51,7 @@ public class BookController {
 
         actions.put(8, () -> {
             String sourceFileName = bookView.readString("Enter the name of the file which content you want to encrypt: ");
-            String resultFileName = bookView.readString("Enter the name of the file, in which encrypted content will be written");
+            String resultFileName = bookView.readString("Enter the name of the file, in which encrypted content will be written: ");
             String key = bookView.readString("Enter the key for the encryptor (1-symbol): ");
             CryptoService.encrypt(sourceFileName, resultFileName, key.toCharArray()[0]);
             System.out.println("Encryption process was finished");
@@ -59,7 +59,7 @@ public class BookController {
 
         actions.put(9, () -> {
             String sourceFileName = bookView.readString("Enter the name of the file which content you want to decrypt: ");
-            String resultFileName = bookView.readString("Enter the name of the file, in which decrypted content will be written");
+            String resultFileName = bookView.readString("Enter the name of the file, in which decrypted content will be written: ");
             String key = bookView.readString("Enter the key for the decryptor (1-symbol): ");
             CryptoService.decrypt(sourceFileName, resultFileName, key.toCharArray()[0]);
             System.out.println("Decryption process was finished");
