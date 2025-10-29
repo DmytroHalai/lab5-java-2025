@@ -1,10 +1,9 @@
 package org.example.service;
 
 import org.example.model.Book;
-import org.example.file.FileBooksReader;
+import org.example.file.FileReader;
 import org.example.file.FileBooksWriter;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class BookService {
 
     public void downloadFromFile(String fileName) {
         books.clear();
-        books.addAll(FileBooksReader.downloadFromFile(fileName));
+        books.addAll(FileReader.downloadFromFile(fileName));
     }
 
     public void saveInFile(String fileName) {

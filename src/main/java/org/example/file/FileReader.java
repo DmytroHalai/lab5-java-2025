@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileBooksReader {
+public class FileReader {
     public static List<Book> downloadFromFile(String fileName) {
         List<Book> books = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class FileBooksReader {
             return "File is empty: " + file.getAbsolutePath();
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader br = new BufferedReader(new java.io.FileReader(fileName))) {
             return br.lines()
                     .filter(line -> line != null && !line.trim().isEmpty())
                     .reduce((l1, l2) -> {
