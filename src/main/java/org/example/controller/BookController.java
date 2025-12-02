@@ -68,7 +68,7 @@ public class BookController {
         actions.put(10, () -> {
             String sourceURL = view.readString("Enter the source URL: ");
             int isOrderedByValue = view.readInt("Enter 1 to order by amount or 0 if by alphabet of tags: ");
-            URLViewer.countTagsFromUrl(sourceURL, isOrderedByValue == 1);
+            URLViewer.countAndPrintTagsFromUrl(sourceURL, isOrderedByValue == 1);
         });
 
         actions.put(11, () -> {
